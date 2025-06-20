@@ -2,24 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Services\OnuService;
+use Illuminate\Support\Facades\Log;
+use Exception;
 
 class OnuController extends Controller
 {
-    protected $service;
+    protected OnuService $onuService;
 
-    public function __construct(OnuService $service) // надо будет отделить бизнес-логику
+    public function __construct(OnuService $onuService)
     {
-        $this->service = $service;
+        $this->onuService = $onuService;
     }
 
     public function loadData(): \Illuminate\Http\JsonResponse
     {
         try {
-            $parsedData = $this->service->fetchAndParseData();
-            $this->service->saveToJson($parsedData);
+            $parsedData = $this->onuService->fetchAndParseData();
+            $this->onuService->saveToJson($parsedData);
             return response()->json($parsedData);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
+            Log::error('Ошибка при загрузке данных ONU: ' . $e->getMessage());
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
