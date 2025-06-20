@@ -1,0 +1,41 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background: #f4f4f4;
+    font-size: 17px;
+}
+
+td {
+    font-size: 15px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: linear-gradient(to right, #4caf50, #66bb6a); /* Градиент от темно-зеленого к светло-зеленому */
+    color: white; /* Цвет текста */
+    border: none; /* Убирает обводку */
+    cursor: pointer; /* Указывает, что кнопка кликабельная */
+    border-radius: 5px; /* Закругленные углы (по желанию) */
+    transition: background 0.3s; /* Плавный переход фона */
+}
+
+button:hover {
+    background: linear-gradient(to right, #66bb6a, #4caf50); /* Изменение градиента при наведении */
+
+}
+
+#loading {
+    display: none;
+    margin-top: 10px;
+}
